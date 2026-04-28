@@ -1,126 +1,26 @@
-buzz:
+wield-reposet:
   active: true
   branch: main
   remotes:
-    gl: git@git.ligo.org:ian.macmillan/buzz.git
-gquest:
-  branch: main
-  remotes: null
-gquest-design:
+    gh: git@github.com:your-username/wield-reposet.git
+
+my-python-project:
   active: true
   branch: main
   remotes:
-    ml: ssh://git@git.mccullerlab.com:2224/gquest/gquest-design.git
-pygwinc:
+    origin: git@github.com:your-username/my-python-project.git
+
+another-project:
   active: true
-  branch: master
+  branch: develop # you can specify a branch other than main/master
   remotes:
-    gl: git@git.ligo.org:gwinc/pygwinc.git
-pygwinc-MyIFO:
-  active: true
+    # you can specify multiple remotes
+    gitlab: git@gitlab.com:your-username/another-project.git
+    github: git@github.com:your-username/another-project.git
+
+old-project:
+  # 'active: false' will cause this repository to be skipped
+  active: false
   branch: main
   remotes:
-    gl: git@git.ligo.org:lee-mcculler/pygwinc-MyIFO.git
-wield-bunch:
-  active: true
-  branch: main
-  remotes:
-    ml: ssh://git@git.mccullerlab.com:2224/wield/wield-bunch.git
-    gh: git@github.com:wieldphysics/wield-bunch.git
-wield-control:
-  active: true
-  branch: main
-  remotes:
-    ml: ssh://git@git.mccullerlab.com:2224/wield/wield-control.git
-    gh: git@github.com:wieldphysics/wield-control.git
-wield-declarative:
-  active: true
-  branch: main
-  remotes:
-    ml: ssh://git@git.mccullerlab.com:2224/wield/wield-declarative.git
-    gh: git@github.com:wieldphysics/wield-declarative.git
-wield-devel:
-  active: true
-  branch: main
-  remotes:
-    ml: ssh://git@git.mccullerlab.com:2224/wield/wield-devel.git
-    gh: git@github.com:wieldphysics/wield-devel.git
-wield-doc:
-  active: true
-  branch: main
-  remotes:
-    ml: ssh://git@git.mccullerlab.com:2224/wield/wield-doc.git
-    gh: git@github.com:wieldphysics/wield-doc.git
-wield-docker-build:
-  active: true
-  branch: main
-  remotes:
-    ml: ssh://git@git.mccullerlab.com:2224/wield/wield-docker-build.git
-wield-epics-autocas:
-  active: true
-  branch: main
-  remotes:
-    ml: ssh://git@git.mccullerlab.com:2224/wield/wield-epics-autocas.git
-    gh: git@github.com:wieldphysics/wield-epics-autocas.git
-wield-iirrational:
-  active: true
-  branch: main
-  remotes:
-    ml: ssh://git@git.mccullerlab.com:2224/wield/wield-iirrational.git
-    gh: git@github.com:wieldphysics/wield-iirrational.git
-wield-LIGO-IFO:
-  active: true
-  branch: main
-  remotes:
-    gl: git@git.ligo.org:wieldphysics/wield-LIGO-IFO.git
-wield-ligo-mcculler:
-  active: true
-  branch: main
-  remotes:
-    gl: git@git.ligo.org:wieldphysics/wield-ligo-mcculler.git
-wield-mcculler:
-  active: true
-  branch: main
-  remotes:
-    gh: git@github.com:mccullerlp/wield-mcculler.git
-wield-model:
-  active: true
-  branch: main
-  remotes:
-    ml: ssh://git@git.mccullerlab.com:2224/wield/wield-model.git
-    gh: git@github.com:wieldphysics/wield-model.git
-wield-namespace:
-  active: true
-  branch: main
-  remotes:
-    ml: ssh://git@git.mccullerlab.com:2224/wield/wield-namespace.git
-    gh: git@github.com:wieldphysics/wield-namespace.git
-wield-nb:
-  active: true
-  branch: main
-  remotes:
-    ml: ssh://git@git.mccullerlab.com:2224/wield/wield-nb.git
-wield-pytest:
-  active: true
-  branch: main
-  remotes:
-    ml: ssh://git@git.mccullerlab.com:2224/wield/wield-pytest.git
-    gh: git@github.com:wieldphysics/wield-pytest.git
-wield-quantum:
-  active: true
-  branch: main
-  remotes:
-    ml: ssh://git@git.mccullerlab.com:2224/wield/wield-quantum.git
-    gh: git@github.com:wieldphysics/wield-quantum.git
-wield-test:
-  active: true
-  branch: main
-  remotes:
-    ml: ssh://git@git.mccullerlab.com:2224/wield/wield-test.git
-    gh: git@github.com:wieldphysics/wield-test.git
-wield-utilities:
-  active: true
-  branch: main
-  remotes:
-    ml: ssh://git@git.mccullerlab.com:2224/wield/wield-utilities.git
-    gh: git@github.com:wieldphysics/wield-utilities.git
+    origin: git@github.com:your-username/old-project.git
