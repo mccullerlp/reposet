@@ -1,4 +1,4 @@
-#!/usr/-bin/env python3
+#!/usr/bin/env python3
 """
 This script loops through immediate subdirectories and installs them in
 development mode.
