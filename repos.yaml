@@ -1,0 +1,95 @@
+buzz:
+  remotes:
+    gl: git@git.ligo.org:ian.macmillan/buzz.git
+conda:
+  remotes: null
+conda-install-develop.sh:
+  remotes: null
+develop:
+  remotes: null
+files.txt:
+  remotes: null
+git_check_uptodate.sh:
+  remotes: null
+git_pull_build.sh:
+  remotes: null
+git-reattach.py:
+  remotes: null
+gquest:
+  remotes: null
+gquest-design:
+  remotes: null
+pip-install-develop.sh:
+  remotes: null
+pygwinc:
+  remotes:
+    gl: git@git.ligo.org:gwinc/pygwinc.git
+pygwinc-MyIFO:
+  remotes:
+    gl: git@git.ligo.org:lee-mcculler/pygwinc-MyIFO.git
+pytest.ini:
+  remotes: null
+submodule_fetch_check.sh:
+  remotes: null
+submodule_foreach_release_wield:
+  remotes: null
+submodule_foreach_wield:
+  remotes: null
+submodule_reattach.sh:
+  remotes: null
+wield-bunch:
+  remotes:
+    gh: git@github.com:wieldphysics/wield-bunch.git
+wield-control:
+  remotes:
+    gh: git@github.com:wieldphysics/wield-control.git
+wield-declarative:
+  remotes:
+    gh: git@github.com:wieldphysics/wield-declarative.git
+wield-devel:
+  remotes:
+    gh: git@github.com:wieldphysics/wield-devel.git
+wield-doc:
+  remotes:
+    gh: git@github.com:wieldphysics/wield-doc.git
+wield-docker-build:
+  remotes: null
+wield-epics-autocas:
+  remotes:
+    gh: git@github.com:wieldphysics/wield-epics-autocas.git
+wield-iirrational:
+  remotes:
+    gh: git@github.com:wieldphysics/wield-iirrational.git
+wield-lab-doc:
+  remotes: null
+wield-LIGO-IFO:
+  remotes:
+    gl: git@git.ligo.org:wieldphysics/wield-LIGO-IFO.git
+wield-ligo-mcculler:
+  remotes:
+    gl: git@git.ligo.org:wieldphysics/wield-ligo-mcculler.git
+wield-mcculler:
+  remotes:
+    gh: git@github.com:mccullerlp/wield-mcculler.git
+wield-model:
+  remotes:
+    gh: git@github.com:wieldphysics/wield-model.git
+wield-namespace:
+  remotes:
+    gh: git@github.com:wieldphysics/wield-namespace.git
+wield-nb:
+  remotes: null
+wield-pytest:
+  remotes:
+    gh: git@github.com:wieldphysics/wield-pytest.git
+wield-quantum:
+  remotes:
+    gh: git@github.com:wieldphysics/wield-quantum.git
+wield-template:
+  remotes: null
+wield-test:
+  remotes:
+    gh: git@github.com:wieldphysics/wield-test.git
+wield-utilities:
+  remotes:
+    gh: git@github.com:wieldphysics/wield-utilities.git
