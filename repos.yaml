@@ -1,112 +1,131 @@
 buzz:
+  active: true
+  branch: main
   remotes:
     gl: git@git.ligo.org:ian.macmillan/buzz.git
-conda:
-  remotes: null
-conda-install-develop.sh:
-  remotes: null
-develop:
-  remotes: null
-files.txt:
-  remotes: null
-git_check_uptodate.sh:
-  remotes: null
-git_pull_build.sh:
-  remotes: null
-git-reattach.py:
-  remotes: null
 gquest:
+  branch: main
   remotes: null
 gquest-design:
+  active: true
+  branch: main
   remotes:
     ml: ssh://git@git.mccullerlab.com:2224/gquest/gquest-design.git
-pip-install-develop.sh:
-  remotes: null
 pygwinc:
+  active: true
+  branch: master
   remotes:
     gl: git@git.ligo.org:gwinc/pygwinc.git
 pygwinc-MyIFO:
+  active: true
+  branch: main
   remotes:
     gl: git@git.ligo.org:lee-mcculler/pygwinc-MyIFO.git
-pytest.ini:
-  remotes: null
-submodule_fetch_check.sh:
-  remotes: null
-submodule_foreach_release_wield:
-  remotes: null
-submodule_foreach_wield:
-  remotes: null
-submodule_reattach.sh:
-  remotes: null
 wield-bunch:
+  active: true
+  branch: main
   remotes:
     gh: git@github.com:wieldphysics/wield-bunch.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-bunch.git
 wield-control:
+  active: true
+  branch: main
   remotes:
     gh: git@github.com:wieldphysics/wield-control.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-control.git
 wield-declarative:
+  active: true
+  branch: main
   remotes:
     gh: git@github.com:wieldphysics/wield-declarative.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-declarative.git
 wield-devel:
+  active: true
+  branch: main
   remotes:
     gh: git@github.com:wieldphysics/wield-devel.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-devel.git
 wield-doc:
+  active: true
+  branch: main
   remotes:
     gh: git@github.com:wieldphysics/wield-doc.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-doc.git
 wield-docker-build:
+  active: true
+  branch: main
   remotes:
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-docker-build.git
 wield-epics-autocas:
+  active: true
+  branch: main
   remotes:
     gh: git@github.com:wieldphysics/wield-epics-autocas.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-epics-autocas.git
 wield-iirrational:
+  active: true
+  branch: main
   remotes:
     gh: git@github.com:wieldphysics/wield-iirrational.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-iirrational.git
 wield-lab-doc:
+  active: true
+  branch: main
   remotes:
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-lab-doc.git
 wield-LIGO-IFO:
+  active: true
+  branch: main
   remotes:
     gl: git@git.ligo.org:wieldphysics/wield-LIGO-IFO.git
 wield-ligo-mcculler:
+  active: true
+  branch: main
   remotes:
     gl: git@git.ligo.org:wieldphysics/wield-ligo-mcculler.git
 wield-mcculler:
+  active: true
+  branch: main
   remotes:
     gh: git@github.com:mccullerlp/wield-mcculler.git
 wield-model:
+  active: true
+  branch: main
   remotes:
     gh: git@github.com:wieldphysics/wield-model.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-model.git
 wield-namespace:
+  active: true
+  branch: main
   remotes:
     gh: git@github.com:wieldphysics/wield-namespace.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-namespace.git
 wield-nb:
+  active: true
+  branch: main
   remotes:
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-nb.git
 wield-pytest:
+  active: true
+  branch: main
   remotes:
     gh: git@github.com:wieldphysics/wield-pytest.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-pytest.git
 wield-quantum:
+  active: true
+  branch: main
   remotes:
     gh: git@github.com:wieldphysics/wield-quantum.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-quantum.git
-wield-template:
-  remotes: null
 wield-test:
+  active: true
+  branch: main
   remotes:
     gh: git@github.com:wieldphysics/wield-test.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-test.git
 wield-utilities:
+  active: true
+  branch: main
   remotes:
     gh: git@github.com:wieldphysics/wield-utilities.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-utilities.git
