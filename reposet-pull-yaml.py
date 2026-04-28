@@ -85,6 +85,32 @@ def main():
     elif args.command == 'sync':
         sync_repos()
 
+def _setup_repo(repo_name, repo_info):
+    # Set up remotes
+    remotes = repo_info.get('remotes') or {}
+
+    #remove all existing remotes
+    stdout, _ = run_command(f"git remote", cwd=repo_name, capture=True)
+    for remote_name in stdout.strip().splitlines():
+        if not remote_name:
+            continue
+        run_command(f"git remote remove {remote_name}", cwd=repo_name, must_succeed=False)
+
+    for remote_name, remote_url in remotes.items():
+        run_command(f"git remote add {remote_name} {remote_url}", cwd=repo_name)
+
+    # Fetch all remotes
+    run_command("git fetch --all", cwd=repo_name)
+
+    # Check out the specified branch
+    branch = repo_info.get('branch', 'main')
+    run_command(f"git checkout {branch}", cwd=repo_name)
+
+    # Set the upstream for the branch to the first remote
+    if remotes:
+        first_remote_name = next(iter(remotes.keys()))
+        run_command(f"git branch --set-upstream-to={first_remote_name}/{branch}", cwd=repo_name, must_succeed=False)
+
 def pull_repos():
     repos = read_yaml_file()
 
@@ -101,33 +127,6 @@ def pull_repos():
             new_repo_tasks.append((repo_name, repo_info))
         else:
             print(f"Skipping {repo_name} as it exists but is not a git repository.")
-
-    def _setup_repo(repo_name, repo_info):
-        # Set up remotes
-        remotes = repo_info.get('remotes') or {}
-
-        #remove all existing remotes
-        stdout, _ = run_command(f"git remote", cwd=repo_name, capture=True)
-        for remote_name in stdout.strip().splitlines():
-            if not remote_name:
-                continue
-            run_command(f"git remote remove {remote_name}", cwd=repo_name, must_succeed=False)
-
-        for remote_name, remote_url in remotes.items():
-            run_command(f"git remote add {remote_name} {remote_url}", cwd=repo_name)
-
-        # Fetch all remotes
-        run_command("git fetch --all", cwd=repo_name)
-
-        # Check out the specified branch
-        branch = repo_info.get('branch', 'main')
-        run_command(f"git checkout {branch}", cwd=repo_name)
-
-        # Set the upstream for the branch to the first remote
-        if remotes:
-            first_remote_name = next(iter(remotes.keys()))
-            run_command(f"git branch --set-upstream-to={first_remote_name}/{branch}", cwd=repo_name, must_succeed=False)
-
     # First, pull non-existing directories
     for repo_name, repo_info in new_repo_tasks:
         print(f"Processing {repo_name}...")
