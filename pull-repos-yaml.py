@@ -80,27 +80,22 @@ def main():
 
 def pull_repos():
     repos = read_yaml_file()
+
+    new_repo_tasks = []
+    existing_repo_tasks = []
+
     for repo_name, repo_info in repos.items():
         if not repo_info.get('active', False):
             continue
 
-        print(f"Processing {repo_name}...")
-        if not os.path.exists(repo_name):
-            # Clone the repo if it doesn't exist
-            remotes = repo_info.get('remotes', {})
-            if not remotes:
-                print(f"No remotes specified for {repo_name}. Skipping.")
-                continue
-            
-            first_remote_url = next(iter(remotes.values()))
-            run_command(f"git clone {first_remote_url} {repo_name}")
+        if os.path.exists(repo_name):
+            existing_repo_tasks.append((repo_name, repo_info))
         else:
-            print(f"Repository {repo_name} already exists. Pulling changes.")
-            run_command("git pull", cwd=repo_name)
+            new_repo_tasks.append((repo_name, repo_info))
 
-
+    def _setup_repo(repo_name, repo_info):
         # Set up remotes
-        remotes = repo_info.get('remotes', {})
+        remotes = repo_info.get('remotes') or {}
         for remote_name, remote_url in remotes.items():
             # first remove the remote in case it has changed
             run_command(f"git remote remove {remote_name}", cwd=repo_name, must_succeed=False)
@@ -117,6 +112,25 @@ def pull_repos():
         if remotes:
             first_remote_name = next(iter(remotes.keys()))
             run_command(f"git branch --set-upstream-to={first_remote_name}/{branch}", cwd=repo_name, must_succeed=False)
+
+    # First, pull non-existing directories
+    for repo_name, repo_info in new_repo_tasks:
+        print(f"Processing {repo_name}...")
+        remotes = repo_info.get('remotes') or {}
+        if not remotes:
+            print(f"No remotes specified for {repo_name}. Skipping clone.")
+            continue
+        
+        first_remote_url = next(iter(remotes.values()))
+        run_command(f"git clone {first_remote_url} {repo_name}")
+        _setup_repo(repo_name, repo_info)
+
+    # Then, do any updates on existing directories
+    for repo_name, repo_info in existing_repo_tasks:
+        print(f"Processing {repo_name}...")
+        print(f"Repository {repo_name} already exists. Pulling changes.")
+        run_command("git pull", cwd=repo_name)
+        _setup_repo(repo_name, repo_info)
 
 def check_repos():
     repos = read_yaml_file()
