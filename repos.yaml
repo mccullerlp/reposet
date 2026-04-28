@@ -68,11 +68,6 @@ wield-iirrational:
   remotes:
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-iirrational.git
     gh: git@github.com:wieldphysics/wield-iirrational.git
-wield-lab-doc:
-  active: true
-  branch: main
-  remotes:
-    ml: ssh://git@git.mccullerlab.com:2224/wield/wield-lab-doc.git
 wield-LIGO-IFO:
   active: true
   branch: main
