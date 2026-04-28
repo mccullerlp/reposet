@@ -25,32 +25,32 @@ wield-bunch:
   active: true
   branch: main
   remotes:
-    gh: git@github.com:wieldphysics/wield-bunch.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-bunch.git
+    gh: git@github.com:wieldphysics/wield-bunch.git
 wield-control:
   active: true
   branch: main
   remotes:
-    gh: git@github.com:wieldphysics/wield-control.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-control.git
+    gh: git@github.com:wieldphysics/wield-control.git
 wield-declarative:
   active: true
   branch: main
   remotes:
-    gh: git@github.com:wieldphysics/wield-declarative.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-declarative.git
+    gh: git@github.com:wieldphysics/wield-declarative.git
 wield-devel:
   active: true
   branch: main
   remotes:
-    gh: git@github.com:wieldphysics/wield-devel.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-devel.git
+    gh: git@github.com:wieldphysics/wield-devel.git
 wield-doc:
   active: true
   branch: main
   remotes:
-    gh: git@github.com:wieldphysics/wield-doc.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-doc.git
+    gh: git@github.com:wieldphysics/wield-doc.git
 wield-docker-build:
   active: true
   branch: main
@@ -60,14 +60,14 @@ wield-epics-autocas:
   active: true
   branch: main
   remotes:
-    gh: git@github.com:wieldphysics/wield-epics-autocas.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-epics-autocas.git
+    gh: git@github.com:wieldphysics/wield-epics-autocas.git
 wield-iirrational:
   active: true
   branch: main
   remotes:
-    gh: git@github.com:wieldphysics/wield-iirrational.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-iirrational.git
+    gh: git@github.com:wieldphysics/wield-iirrational.git
 wield-lab-doc:
   active: true
   branch: main
@@ -92,14 +92,14 @@ wield-model:
   active: true
   branch: main
   remotes:
-    gh: git@github.com:wieldphysics/wield-model.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-model.git
+    gh: git@github.com:wieldphysics/wield-model.git
 wield-namespace:
   active: true
   branch: main
   remotes:
-    gh: git@github.com:wieldphysics/wield-namespace.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-namespace.git
+    gh: git@github.com:wieldphysics/wield-namespace.git
 wield-nb:
   active: true
   branch: main
@@ -109,23 +109,23 @@ wield-pytest:
   active: true
   branch: main
   remotes:
-    gh: git@github.com:wieldphysics/wield-pytest.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-pytest.git
+    gh: git@github.com:wieldphysics/wield-pytest.git
 wield-quantum:
   active: true
   branch: main
   remotes:
-    gh: git@github.com:wieldphysics/wield-quantum.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-quantum.git
+    gh: git@github.com:wieldphysics/wield-quantum.git
 wield-test:
   active: true
   branch: main
   remotes:
-    gh: git@github.com:wieldphysics/wield-test.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-test.git
+    gh: git@github.com:wieldphysics/wield-test.git
 wield-utilities:
   active: true
   branch: main
   remotes:
-    gh: git@github.com:wieldphysics/wield-utilities.git
     ml: ssh://git@git.mccullerlab.com:2224/wield/wield-utilities.git
+    gh: git@github.com:wieldphysics/wield-utilities.git
