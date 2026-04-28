@@ -1,8 +1,15 @@
 #!/usr/bin/env python3
 """
-Run a git command in each immediate subfolder that is a git repository.
-A special 'state' command is available to check for dirty repos or repos with
-commits to push.
+This script provides a way to run a git command against multiple repositories.
+It is designed to be run in a directory containing multiple git repositories
+as immediate subdirectories.
+
+The script finds all immediate subdirectories, checks if they are git
+repositories, and then executes the given git command within each of them.
+
+It also provides a special 'state' command which gives a summary of which
+repositories have uncommitted changes (are "dirty") and which have commits
+that have not been pushed to their remote upstream branch.
 """
 
 import os
@@ -18,7 +25,11 @@ def is_git_repo(path):
     return os.path.isdir(os.path.join(path, '.git'))
 
 def run_command_capture(cmd, cwd='.'):
-    """Runs a command and captures its output. Returns stdout or None on error."""
+    """Runs a command, captures its output, and returns it as a string.
+
+    Returns stdout stripped of whitespace. Returns None if the command fails or
+    is not found. Stderr is suppressed.
+    """
     try:
         result = subprocess.run(
             cmd,
@@ -33,25 +44,39 @@ def run_command_capture(cmd, cwd='.'):
         return None
 
 def state_command():
-    """Checks the state of git repositories in subfolders."""
+    """Checks the git status of each repository in the subfolders.
+
+    It identifies and reports repositories that are "dirty" (have uncommitted
+    changes) and repositories that have commits that need to be pushed to the
+    remote.
+    """
+    # Get all subdirectories of the current path.
     subfolders = get_subfolders()
     dirty_repos = []
     push_repos = []
 
+    # Iterate over subfolders, checking git status for each.
     for repo in sorted(subfolders):
+        # Skip any subdirectories that are not git repositories.
         if not is_git_repo(repo):
             continue
 
-        # Check for dirty state
+        # Check for dirty state using 'git status --porcelain'.
+        # This command provides a concise output of changes. If there is any
+        # output, the repository is dirty.
         if run_command_capture(['git', 'status', '--porcelain'], cwd=repo):
             dirty_repos.append(repo)
 
-        # Check for commits to push
+        # Check for commits to push.
+        # First, check if an upstream branch is configured.
         if run_command_capture(['git', 'rev-parse', '@{u}'], cwd=repo) is not None:
+            # If so, count commits between upstream and HEAD.
             commits_to_push_str = run_command_capture(['git', 'rev-list', '--count', '@{u}..HEAD'], cwd=repo)
+            # If there are commits to push, add to the list.
             if commits_to_push_str and int(commits_to_push_str) > 0:
                 push_repos.append(f"{repo} ({commits_to_push_str} commit(s))")
 
+    # Report the findings.
     if dirty_repos:
         print("Repositories with uncommitted changes:")
         for repo in dirty_repos:
@@ -67,31 +92,39 @@ def state_command():
         print("\nNo repositories with commits to push.")
 
 def main():
-    """Main function."""
+    """Main function to parse arguments and execute commands."""
+    # The script requires at least one argument (the git command or 'state').
     if len(sys.argv) < 2:
         print(f"Usage: {sys.argv[0]} <git command> | state")
         sys.exit(1)
 
+    # Handle the special 'state' command.
     if sys.argv[1] == 'state':
         state_command()
         return
 
+    # For any other command, prepend 'git' and prepare for execution.
     git_cmd = ['git'] + sys.argv[1:]
     subfolders = get_subfolders()
     
     error_occurred = False
+    # Iterate through subfolders and run the git command in each git repository.
     for repo in sorted(subfolders):
         if is_git_repo(repo):
             print(f"\n--- Executing in {repo} ---")
             try:
+                # Run the command. Output is passed through to the user's terminal.
                 # Passthrough stdout/stderr
                 subprocess.run(git_cmd, cwd=repo, check=True)
             except subprocess.CalledProcessError:
+                # If a command fails in one repo, note it and continue.
                 error_occurred = True
             except FileNotFoundError:
+                # This handles the case where 'git' is not installed or not in PATH.
                 print("Error: 'git' command not found.", file=sys.stderr)
                 sys.exit(1)
     
+    # Exit with a non-zero status code if any command failed.
     if error_occurred:
         sys.exit(1)
 
