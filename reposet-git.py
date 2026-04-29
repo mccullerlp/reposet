@@ -36,8 +36,7 @@ def run_command_capture(cmd, cwd='.'):
             cwd=cwd,
             check=True,
             capture_output=True,
-            text=True,
-            stderr=subprocess.DEVNULL
+            text=True
         )
         return result.stdout.strip()
     except (subprocess.CalledProcessError, FileNotFoundError):
