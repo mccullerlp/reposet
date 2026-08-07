@@ -8,8 +8,9 @@ The script finds all immediate subdirectories, checks if they are git
 repositories, and then executes the given git command within each of them.
 
 It also provides a special 'state' command which gives a summary of which
-repositories have uncommitted changes (are "dirty") and which have commits
-that have not been pushed to their remote upstream branch.
+repositories have uncommitted changes (are "dirty"), which have commits
+that have not been pushed to their remote upstream branch, and which have no
+upstream configured for their current branch.
 """
 
 import os
@@ -46,13 +47,14 @@ def state_command():
     """Checks the git status of each repository in the subfolders.
 
     It identifies and reports repositories that are "dirty" (have uncommitted
-    changes) and repositories that have commits that need to be pushed to the
-    remote.
+    changes), repositories that have commits that need to be pushed to the
+    remote, and repositories whose current branch has no upstream assigned.
     """
     # Get all subdirectories of the current path.
     subfolders = get_subfolders()
     dirty_repos = []
     push_repos = []
+    no_upstream_repos = []
 
     # Iterate over subfolders, checking git status for each.
     for repo in sorted(subfolders):
@@ -74,6 +76,15 @@ def state_command():
             # If there are commits to push, add to the list.
             if commits_to_push_str and int(commits_to_push_str) > 0:
                 push_repos.append(f"{repo} ({commits_to_push_str} commit(s))")
+        else:
+            # No upstream is configured for the current branch. Report the
+            # branch name so it is clear what needs tracking; an empty result
+            # means HEAD is detached, which cannot have an upstream at all.
+            branch = run_command_capture(['git', 'branch', '--show-current'], cwd=repo)
+            if branch:
+                no_upstream_repos.append(f"{repo} (branch '{branch}')")
+            else:
+                no_upstream_repos.append(f"{repo} (detached HEAD)")
 
     # Report the findings.
     if dirty_repos:
@@ -89,6 +100,13 @@ def state_command():
             print(f"  - {repo}")
     else:
         print("\nNo repositories with commits to push.")
+
+    if no_upstream_repos:
+        print("\nRepositories with no upstream for the current branch:")
+        for repo in no_upstream_repos:
+            print(f"  - {repo}")
+    else:
+        print("\nAll repositories have an upstream for the current branch.")
 
 def main():
     """Main function to parse arguments and execute commands."""
